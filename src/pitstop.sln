@@ -27,6 +27,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUtils", "TestUtils\TestUtils.csproj", "{53DCDC74-1B80-4EA2-8DF2-01DA5265A8CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{465F15A5-E1A8-4D9A-A95F-7F951CF77EC0}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\max.md = ..\docs\max.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adr", "adr", "{DE329AD2-663E-4303-A6FB-85A60FC944E3}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\adr\sentry.md = ..\docs\adr\sentry.md
+		..\docs\adr\README.md = ..\docs\adr\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "persoonlijke-bijdrage", "persoonlijke-bijdrage", "{A14A5099-EA92-4018-8135-35765A16B9F9}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\gus.md = ..\docs\gus.md
+		..\docs\kevin.md = ..\docs\kevin.md
+		..\docs\luuk.md = ..\docs\luuk.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,5 +102,9 @@ Global
 		{53DCDC74-1B80-4EA2-8DF2-01DA5265A8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53DCDC74-1B80-4EA2-8DF2-01DA5265A8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53DCDC74-1B80-4EA2-8DF2-01DA5265A8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE329AD2-663E-4303-A6FB-85A60FC944E3} = {465F15A5-E1A8-4D9A-A95F-7F951CF77EC0}
+		{A14A5099-EA92-4018-8135-35765A16B9F9} = {465F15A5-E1A8-4D9A-A95F-7F951CF77EC0}
 	EndGlobalSection
 EndGlobal
