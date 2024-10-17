@@ -12,5 +12,6 @@ public class MaintenanceHistory
     public Guid MaintenanceJobId { get; set; }
     [DefaultValue("false")]
     public bool IsCompleted { get; set; }
+    public List<UsedParts> UsedParts { get; set; }
 }
 

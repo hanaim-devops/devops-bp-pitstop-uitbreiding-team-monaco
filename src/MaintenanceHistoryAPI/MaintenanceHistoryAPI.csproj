@@ -36,4 +36,8 @@
         <PackageReference Include="Swashbuckle.AspNetCore" />
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\WorkshopManagementAPI\WorkshopManagementAPI.csproj" />
+    </ItemGroup>
+
 </Project>
