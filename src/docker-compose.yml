@@ -133,7 +133,6 @@ services:
       - sqlserver
     environment:
       - DOTNET_ENVIRONMENT=Production
-
   webapp:
     image: pitstop/webapp:1.0
     build: WebApp

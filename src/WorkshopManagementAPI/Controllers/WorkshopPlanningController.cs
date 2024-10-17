@@ -84,7 +84,6 @@ public class WorkshopPlanningController : Controller
                     // handle command
                     WorkshopPlanning planning = await
                         _planMaintenanceJobCommandHandler.HandleCommandAsync(planningDate, command);
-
                     // handle result    
                     if (planning == null)
                     {
