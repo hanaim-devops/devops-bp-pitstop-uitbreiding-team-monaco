@@ -1,4 +1,4 @@
-namespace MaintenanceHistoryAPI.Model;
+namespace Pitstop.MaintenanceHistoryAPI.Model;
 
 public class MaintenanceHistory
 {
@@ -7,5 +7,6 @@ public class MaintenanceHistory
     public string Description { get; set; }
     public MaintenanceTypes MaintenanceType { get; set; }
     public Guid MaintenanceJobId { get; set; }
+    public List<UsedParts> UsedParts { get; set; }
 }
 
