@@ -1,10 +1,10 @@
 using System.ComponentModel;
+using MaintenanceHistoryAPI.Enums;
 
-namespace MaintenanceHistoryAPI.Model;
+namespace Pitstop.WorkshopManagementEventHandler.Model;
 
 public class MaintenanceHistory
 {
-    public int Id { get; set; }
     public string LicenseNumber { get; set; }
     public DateTime MaintenanceDate { get; set; }
     public string? Description { get; set; }
