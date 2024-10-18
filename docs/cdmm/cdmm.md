@@ -49,5 +49,5 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit denken wij omdat we voldoen aan een aantal punten die relevant zijn aan de categorie:
 
 - [ ] IR-201 Gedeeld informatiemodel:
-- [ ] IR-202 Traceerbaarheid ingebouwd in pipeline: Historie van de uitgevoerde pipelines kan ingezien worden. Hierdoor is er altijd een traceerbaarheid van elke pipeline
+- [x] IR-202 Traceerbaarheid ingebouwd in pipeline: Historie van de uitgevoerde pipelines kan ingezien worden. Hierdoor is er altijd een traceerbaarheid van elke pipeline
 - [x] IR-203 Rapportage historie is beschikbaar: Monitoringtool Sentry gebruikt om de history en error tracking van de applicatie bij te houden
