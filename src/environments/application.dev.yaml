@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: primetester-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco.git
+    targetRevision: HEAD
+    path: src/environments/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: pitstop
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
