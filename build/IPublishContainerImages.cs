@@ -42,6 +42,7 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
         .Requires(() => Images.Any())
         .DependsOn(DotNetBuildSolution)
         .OnlyWhenStatic(() => IsLocalBuild || Repository.IsOnMasterBranch())
+        .Produces(ArtifactsDirectory / "images.tar")
         .Executes(() =>
         {
             BuildDotNetSdkBaseImage();
@@ -73,6 +74,7 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
     /// </summary>
     Target PublishContainerImages => d => d
         .DependsOn(BuildContainerImages)
+        .Consumes(BuildContainerImages)
         .TryTriggeredBy<xBuild>(b => b.Deploy)
         .OnlyWhenStatic(() => IsServerBuild && Repository.IsOnMasterBranch())
         .Executes(() =>

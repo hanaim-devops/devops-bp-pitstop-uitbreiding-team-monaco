@@ -12,8 +12,7 @@ using Serilog;
 public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
 {
     AbsolutePath HelmChartDirectory => RootDirectory / "charts";
-    
-    AbsolutePath ArgoCdValuesDirectory => RootDirectory / "src/environments/argocd-values.yaml";
+    AbsolutePath ArgoCdValuesDirectory => RootDirectory / "src" / "environments";
     string LocalClusterContext => "docker-desktop";
     
     string ServerClusterContext => "server-cluster";
@@ -68,6 +67,7 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
                 .SetVersion("7.6.9")
                 .SetNamespace("argocd")
                 .SetCreateNamespace(true)
+                .SetValues(ArgoCdValuesDirectory / "values-argo-cd.yaml")
                 .EnableInstall()
                 .SetWait(true)
             );
@@ -87,7 +87,7 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
                     .SetRelease("argo-cd")
                     .SetChart("argo/argo-cd")
                     .SetNamespace("argocd")
-                    .SetValues(ArgoCdValuesDirectory)
+                    .SetValues(ArgoCdValuesDirectory / "argocd-values.yaml")
                 );
             }
         });

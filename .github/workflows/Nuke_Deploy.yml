@@ -42,3 +42,8 @@ jobs:
           DOCR_EU_DEV_PASSWORD: ${{ secrets.DOCR_EU_DEV_PASSWORD }}
           DOCR_EU_DEV_USERNAME: ${{ secrets.DOCR_EU_DEV_USERNAME }}
           KUBECONFIG_CLUSTER: ${{ secrets.KUBECONFIG_CLUSTER }}
+      - name: 'Publish: images.tar'
+        uses: actions/upload-artifact@v4
+        with:
+          name: images.tar
+          path: artifacts/images.tar
