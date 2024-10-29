@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Serilog;
 
 namespace Pitstop.MaintenanceHistoryAPI;
 
