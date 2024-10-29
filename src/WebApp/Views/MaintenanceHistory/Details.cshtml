@@ -22,7 +22,7 @@
         {
             if (usedPart.RepairPart != null)
             {
-                <li>@usedPart.RepairPart.Name used @usedPart.UsedQuantity time@(usedPart.UsedQuantity > 1 ? "s" : "") with a warranty period of @usedPart.RepairPart.WarrantyPeriod year@(usedPart.RepairPart.WarrantyPeriod > 1 ? "s" : "")</li>
+                <li>@usedPart.RepairPart.Name - quantity used: (@usedPart.UsedQuantity) - with a warranty period of @usedPart.RepairPart.WarrantyPeriod year@(usedPart.RepairPart.WarrantyPeriod > 1 ? "s" : "")</li>
             }
         }
     </ul>
