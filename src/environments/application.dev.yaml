@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: primetester-application
+  name: pitstop-dev
   namespace: argocd
 spec:
   project: default
 
   source:
     repoURL: https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco.git
-    targetRevision: HEAD
+    targetRevision: 6-argo-cd
     path: src/environments/dev
   destination:
     server: https://kubernetes.default.svc
