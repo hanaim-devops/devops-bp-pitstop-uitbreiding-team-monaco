@@ -15,7 +15,7 @@ public interface IDeployKubernetesManifests : IGitRepository
         .Executes(() =>
         {
             ProcessTasks.DefaultWorkingDirectory = LegacyStartScriptDirectory;
-            ProcessTasks.StartProcess(LegacyStartScriptDirectory + "/start-all.sh", "--nomesh").AssertZeroExitCode();
+            // ProcessTasks.StartProcess(LegacyStartScriptDirectory + "/start-all.sh", "--nomesh").AssertZeroExitCode();
         });
     
     Target DeployManifests => _ => _
