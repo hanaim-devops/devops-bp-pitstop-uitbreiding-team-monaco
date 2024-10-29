@@ -1,4 +1,5 @@
-using Pitstop.MaintenanceHistoryAPI.DataAccess;
+using Pitstop.Infrastructure.Messaging.Configuration;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +34,11 @@ builder.WebHost.UseSentry(o =>
     ));
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        });
 
 // Add services to the container.
 

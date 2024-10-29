@@ -22,7 +22,7 @@ namespace MaintenanceHistoryAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MaintenanceHistoryAPI.Model.MaintenanceHistory", b =>
+            modelBuilder.Entity("Pitstop.MaintenanceHistoryAPI.Model.MaintenanceHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,6 +51,79 @@ namespace MaintenanceHistoryAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MaintenanceHistory", (string)null);
+                });
+
+            modelBuilder.Entity("Pitstop.MaintenanceHistoryAPI.Model.RepairPart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WarrantyPeriod")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RepairParts", (string)null);
+                });
+
+            modelBuilder.Entity("Pitstop.MaintenanceHistoryAPI.Model.UsedPart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MaintenanceHistoryId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RepairPartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("UsedQuantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaintenanceHistoryId");
+
+                    b.HasIndex("RepairPartId");
+
+                    b.ToTable("UsedParts", (string)null);
+                });
+
+            modelBuilder.Entity("Pitstop.MaintenanceHistoryAPI.Model.UsedPart", b =>
+                {
+                    b.HasOne("Pitstop.MaintenanceHistoryAPI.Model.MaintenanceHistory", "MaintenanceHistory")
+                        .WithMany("UsedParts")
+                        .HasForeignKey("MaintenanceHistoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pitstop.MaintenanceHistoryAPI.Model.RepairPart", "RepairPart")
+                        .WithMany()
+                        .HasForeignKey("RepairPartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaintenanceHistory");
+
+                    b.Navigation("RepairPart");
+                });
+
+            modelBuilder.Entity("Pitstop.MaintenanceHistoryAPI.Model.MaintenanceHistory", b =>
+                {
+                    b.Navigation("UsedParts");
                 });
 #pragma warning restore 612, 618
         }

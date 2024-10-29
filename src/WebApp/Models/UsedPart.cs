@@ -1,12 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace Pitstop.MaintenanceHistoryAPI.Model;
+namespace Pitstop.WebApp.Models;
 
 public class UsedPart
 {
-    [Key]
     public int Id { get; set; }
-    
     public int UsedQuantity { get; set; } = 1;
 
     public int RepairPartId { get; set; }
