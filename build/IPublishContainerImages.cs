@@ -30,7 +30,7 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
     IReadOnlyCollection<Project> Projects => Solution.AllProjects.Where(p => p.IsContainerApp()).ToList();
     
     private IReadOnlyDictionary<Project, ContainerImage> Images => Projects.ToDictionary(p => p, p =>
-        new ContainerImage(p.Name.ToLower(), Version.FullVersion, ContainerRegistry, ContainerRegistryHost));
+        new ContainerImage(p.Name.ToLower(), Version.FileVersion, ContainerRegistry, ContainerRegistryHost));
 
     private AbsolutePath PublishPath(string projectName) => ArtifactsDirectory / projectName;
     
@@ -53,10 +53,12 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
             {
                 DotNetPublish(project, PublishPath(project.Name));
 
-                DockerTasks.DockerBuild(config => config
+                DockerTasks.DockerBuildxBuild(config => config
                     .SetPath(project.Directory)
                     .SetFile($"{project.Directory}/Dockerfile")
                     .SetTag(image.BuildTags)
+                    .SetPlatform("linux/amd64")
+                    .SetLoad(true)
                     .SetQuiet(true));
             }
 
@@ -98,28 +100,34 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
     
     private void BuildDotNetSdkBaseImage()
     {
-        DockerTasks.DockerBuild(config => config
+        DockerTasks.DockerBuildxBuild(config => config
             .SetPath(RootDirectory / "src")
             .SetFile(RootDirectory / "src" / "dotnet-sdk-base-dockerfile")
             .SetTag("pitstop-dotnet-sdk-base:1.0")
+            .SetPlatform("linux/amd64")
+            .SetLoad(true)
             .SetQuiet(true));
     }
 
     private void BuildDotNetRuntimeBaseImage()
     {
-        DockerTasks.DockerBuild(config => config
+        DockerTasks.DockerBuildxBuild(config => config
             .SetPath(RootDirectory / "src")
             .SetFile(RootDirectory / "src" / "dotnet-runtime-base-dockerfile")
             .SetTag("pitstop-dotnet-runtime-base:1.0")
+            .SetPlatform("linux/amd64")
+            .SetLoad(true)
             .SetQuiet(true));
     }
 
     private void BuildDotNetAspNetBaseImage()
     {
-        DockerTasks.DockerBuild(config => config
+        DockerTasks.DockerBuildxBuild(config => config
             .SetPath(RootDirectory / "src")
             .SetFile(RootDirectory / "src" / "dotnet-aspnet-base-dockerfile")
             .SetTag("pitstop-dotnet-aspnet-base:1.0")
+            .SetPlatform("linux/amd64")
+            .SetLoad(true)
             .SetQuiet(true));
     }
 }
