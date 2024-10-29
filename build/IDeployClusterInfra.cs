@@ -12,6 +12,8 @@ using Serilog;
 public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
 {
     AbsolutePath HelmChartDirectory => RootDirectory / "charts";
+    
+    AbsolutePath ArgoCdValuesDirectory => RootDirectory / "src/environments/argocd-values.yaml";
     string LocalClusterContext => "docker-desktop";
     
     string ServerClusterContext => "server-cluster";
@@ -80,9 +82,13 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
                 var decodedSecret = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(secret));
 
                 Log.Information($"Argo CD initial admin password: {decodedSecret}");
-                
-                // Port-forward Argo CD server to local port 8080
-                KubernetesTasks.Kubernetes("port-forward svc/argo-cd-argocd-server -n argocd 8080:443");
+
+                HelmTasks.HelmUpgrade(s => s
+                    .SetRelease("argo-cd")
+                    .SetChart("argo/argo-cd")
+                    .SetNamespace("argocd")
+                    .SetValues(ArgoCdValuesDirectory)
+                );
             }
         });
 }
