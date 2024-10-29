@@ -46,7 +46,8 @@ public class MaintenanceHistoryController : Controller
             MaintenanceDate = history.MaintenanceDate,
             Description = history.Description,
             MaintenanceType = history.MaintenanceType,
-            IsCompleted = history.IsCompleted
+            IsCompleted = history.IsCompleted,
+            UsedParts = history.UsedParts
         };
         return View(model);
     }

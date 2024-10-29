@@ -63,3 +63,72 @@ FROM @JobIds j;
 
 -- Disable IDENTITY_INSERT after insertion
 SET IDENTITY_INSERT [MaintenanceHistory].[dbo].[MaintenanceHistory] OFF;
+
+-- Enable IDENTITY_INSERT for the RepairPart table
+set IDENTITY_INSERT [MaintenanceHistory].[dbo].[RepairParts] ON;
+
+-- Create a CTE to generate unique IDs using ROW_NUMBER()
+WITH RepairPartsCTE AS (
+    SELECT
+        ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS Id,
+            Name,
+        Quantity,
+        Price,
+        WarrantyPeriod
+    FROM (VALUES
+              ('Oil filter', 150, 10.00, 5),
+              ('Brake pads', 10, 50.00, 10),
+              ('Tire', 120, 100.00, 15),
+              ('Battery', 16, 150.00, 20),
+              ('Engine diagnostic tool', 12, 500.00, 30),
+              ('Transmission fluid', 500, 20.00, 5),
+              ('Coolant', 200, 15.00, 5),
+              ('Air filter', 40, 10.00, 5),
+              ('Fuel injector cleaner', 6, 25.00, 5)
+         ) AS Parts(Name, Quantity, Price, WarrantyPeriod)
+)
+
+-- Insert data from CTE into RepairPart table
+INSERT INTO [MaintenanceHistory].[dbo].[RepairParts]
+([Id], [Name], [Quantity], [Price], [WarrantyPeriod])
+SELECT
+    Id,
+    Name,
+    Quantity,
+    Price,
+    WarrantyPeriod
+FROM RepairPartsCTE;
+
+set IDENTITY_INSERT [MaintenanceHistory].[dbo].[RepairParts] OFF;
+    
+-- Enable IDENTITY_INSERT for the UsedParts table
+SET IDENTITY_INSERT [MaintenanceHistory].[dbo].[UsedParts] ON;
+    
+-- Insert sample data into UsedParts table
+-- Step 1: Select current MaintenanceHistory IDs
+DECLARE @MaintenanceHistoryIds TABLE (Id INT);
+INSERT INTO @MaintenanceHistoryIds (Id)
+SELECT Id FROM [MaintenanceHistory].[dbo].[MaintenanceHistory];
+
+-- Step 2: Create a CTE to generate sequential IDs and random assignments
+WITH RandomUsedParts AS (
+    SELECT
+        ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS Id,
+            ABS(CHECKSUM(NEWID())) % 10 + 1 AS UsedQuantity, -- Random quantity between 1 and 10
+    ABS(CHECKSUM(NEWID())) % (SELECT COUNT(*) FROM [MaintenanceHistory].[dbo].[RepairParts]) + 1 AS RepairPartId,
+    Id AS MaintenanceHistoryId
+FROM @MaintenanceHistoryIds
+    )
+
+-- Step 3: Insert data from CTE into UsedParts table
+INSERT INTO [MaintenanceHistory].[dbo].[UsedParts]
+([Id], [UsedQuantity], [RepairPartId], [MaintenanceHistoryId])
+SELECT
+    Id,
+    UsedQuantity,
+    RepairPartId,
+    MaintenanceHistoryId
+FROM RandomUsedParts;
+
+-- Disable IDENTITY_INSERT after insertion
+SET IDENTITY_INSERT [MaintenanceHistory].[dbo].[UsedParts] OFF;

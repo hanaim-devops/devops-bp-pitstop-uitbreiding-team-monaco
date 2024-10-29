@@ -15,7 +15,10 @@ public class MaintenanceHistoryController : Controller
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        return Ok(await _dbContext.MaintenanceHistories.ToListAsync());
+        return Ok(await _dbContext.MaintenanceHistories
+            .Include(c => c.UsedParts)
+            .ThenInclude(up => up.RepairPart)
+            .ToListAsync());
     }
     
     [HttpGet]
@@ -23,8 +26,10 @@ public class MaintenanceHistoryController : Controller
     public async Task<IActionResult> GetById(int id)
     {
         var history = await _dbContext.MaintenanceHistories
+            .Include(c => c.UsedParts)
+                .ThenInclude(up => up.RepairPart)
             .FirstOrDefaultAsync(c => c.Id == id);
-
+        
         if (history == null)
         {
             return NotFound();
@@ -38,6 +43,8 @@ public class MaintenanceHistoryController : Controller
     public async Task<IActionResult> GetByLicenseNumber(string licenseNumber)
     {
         var history = await _dbContext.MaintenanceHistories
+            .Include(c => c.UsedParts)
+                .ThenInclude(up => up.RepairPart)
             .Where(c => c.LicenseNumber == licenseNumber)
             .ToListAsync();
     

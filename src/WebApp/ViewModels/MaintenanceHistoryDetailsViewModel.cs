@@ -10,4 +10,6 @@ public class MaintenanceHistoryDetailsViewModel
     public string Description { get; set; }
     public MaintenanceTypes MaintenanceType { get; set; }
     public bool IsCompleted { get; set; }
+    
+    public List<UsedPart> UsedParts { get; set; }
 }

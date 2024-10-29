@@ -13,3 +13,21 @@
 
 <h4>Is the maintenance complete?</h4>
 <p>@(Model.IsCompleted ? "Yes" : "No")</p>
+
+<h4>Used parts</h4>
+@if (Model.UsedParts != null)
+{
+    <ul>
+        @foreach (var usedPart in Model.UsedParts)
+        {
+            if (usedPart.RepairPart != null)
+            {
+                <li>@usedPart.RepairPart.Name used @usedPart.UsedQuantity time@(usedPart.UsedQuantity > 1 ? "s" : "") with a warranty period of @usedPart.RepairPart.WarrantyPeriod year@(usedPart.RepairPart.WarrantyPeriod > 1 ? "s" : "")</li>
+            }
+        }
+    </ul>
+}
+else
+{
+    <p>No parts used</p>
+}
