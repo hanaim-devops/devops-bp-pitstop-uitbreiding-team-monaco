@@ -22,7 +22,7 @@ spec:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
-        image: pitstop/webapp:1.0
+        image: kslingerland/webapp:0.0.1.0-fix-build-and-setup-cluster
         imagePullPolicy: IfNotPresent
         name: webapp
         ports:
