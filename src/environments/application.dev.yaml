@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: pitstop-dev
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: kslingerland/auditlogservice,kslingerland/customermanagementapi,kslingerland/invoiceservice,kslingerland/notificationservice,kslingerland/timeservice,kslingerland/vehiclemanagementapi,kslingerland/webapp,kslingerland/workshopmanagementapi,kslingerland/workshopmanagementeventhandler
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+    argocd-image-updater.argoproj.io/branch: 6-argo-cd
 spec:
   project: default
 
