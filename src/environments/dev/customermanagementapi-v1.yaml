@@ -22,7 +22,7 @@ spec:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
-        image: pitstop/customermanagementapi:1.0
+        image: kslingerland/customermanagementapi:0.0.1.0-fix-build-and-setup-cluster
         imagePullPolicy: IfNotPresent
         name: customermanagementapi
         ports:
