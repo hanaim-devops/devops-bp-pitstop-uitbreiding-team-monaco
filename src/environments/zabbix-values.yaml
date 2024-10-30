@@ -1,0 +1,5 @@
+﻿zabbixWeb:
+  service:
+    type: NodePort
+    port: 80
+    nodePort: 30080 # Choose a unique port in the range 30000-32767
