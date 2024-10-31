@@ -6,6 +6,7 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <AssemblyName>Pitstop.MaintenanceHistoryAPI</AssemblyName>
         <RootNamespace>Pitstop.MaintenanceHistoryAPI</RootNamespace>
+        <IsContainerApp>true</IsContainerApp>
     </PropertyGroup>
 
     <ItemGroup>
