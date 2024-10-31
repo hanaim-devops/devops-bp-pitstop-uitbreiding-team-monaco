@@ -27,7 +27,7 @@ public class MaintenanceHistoryController : Controller
     {
         var history = await _dbContext.MaintenanceHistories
             .Include(c => c.UsedParts)
-                .ThenInclude(up => up.RepairPart)
+            .ThenInclude(up => up.RepairPart)
             .FirstOrDefaultAsync(c => c.Id == id);
         
         if (history == null)
@@ -44,11 +44,11 @@ public class MaintenanceHistoryController : Controller
     {
         var history = await _dbContext.MaintenanceHistories
             .Include(c => c.UsedParts)
-                .ThenInclude(up => up.RepairPart)
+            .ThenInclude(up => up.RepairPart)
             .Where(c => c.LicenseNumber == licenseNumber)
             .ToListAsync();
     
-        if (!history.Any())
+        if (history.Count == 0)
         {
             return NotFound();
         }

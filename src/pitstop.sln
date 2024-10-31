@@ -35,19 +35,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build & Deploy", "Build & D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{465F15A5-E1A8-4D9A-A95F-7F951CF77EC0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adr", "adr", "{DE329AD2-663E-4303-A6FB-85A60FC944E3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{DE329AD2-663E-4303-A6FB-85A60FC944E3}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\adr\sentry.md = ..\docs\adr\sentry.md
 		..\docs\adr\README.md = ..\docs\adr\README.md
 		..\docs\adr\argocd.md = ..\docs\adr\argocd.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdmm", "cdmm", "{277C3590-EA35-4C6C-A38E-C9386B274023}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CDMM", "CDMM", "{277C3590-EA35-4C6C-A38E-C9386B274023}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\cdmm\cdmm.md = ..\docs\cdmm\cdmm.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "individueel", "individueel", "{432A38CB-1A63-4912-8AC8-D4E71F58ACC5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Individueel", "Individueel", "{432A38CB-1A63-4912-8AC8-D4E71F58ACC5}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\individueel\gus.md = ..\docs\individueel\gus.md
 		..\docs\individueel\max.md = ..\docs\individueel\max.md
