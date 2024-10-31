@@ -22,7 +22,7 @@ spec:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
-        image: kslingerland/workshopmanagementapi:0.0.1.0-fix-build-and-setup-cluster
+        image: kslingerland/workshopmanagementapi:0.0.1
         imagePullPolicy: IfNotPresent
         name: workshopmanagementapi
         ports:
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: workshopmanagementapi
   name: workshopmanagementapi
   namespace: pitstop
+  labels:
+    app: workshopmanagementapi
 spec:
   type: NodePort
   ports:

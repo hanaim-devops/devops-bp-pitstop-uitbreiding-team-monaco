@@ -81,25 +81,25 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
                 );
             });
             
-            if (IsLocalBuild)
-            {
-                // Retrieve and print the initial admin secret
-                var secret = KubernetesTasks.Kubernetes($"get secret -n argocd argocd-initial-admin-secret -o jsonpath=\"{{.data.password}}\"")
-                    .FirstOrDefault()
-                    .Text;
-                
-                var decodedSecret = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(secret));
-
-                Log.Information($"Argo CD initial admin password: {decodedSecret}");
-
-                HelmCharts.ForEach(x =>
-                {
-                    HelmTasks.HelmUpgrade(s => s
-                        .SetRelease(x.Release)
-                        .SetChart(x.Chart)
-                        .SetNamespace(x.Namespace)
-                        .SetValues(RootDirectory / "src" / "environments" / x.ValuesFile));
-                });
-            }
+            // if (IsLocalBuild)
+            // {
+            //     // Retrieve and print the initial admin secret
+            //     var secret = KubernetesTasks.Kubernetes($"get secret -n argocd argocd-initial-admin-secret -o jsonpath=\"{{.data.password}}\"")
+            //         .FirstOrDefault()
+            //         .Text;
+            //     
+            //     var decodedSecret = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(secret));
+            //
+            //     Log.Information($"Argo CD initial admin password: {decodedSecret}");
+            //
+            //     HelmCharts.ForEach(x =>
+            //     {
+            //         HelmTasks.HelmUpgrade(s => s
+            //             .SetRelease(x.Release)
+            //             .SetChart(x.Chart)
+            //             .SetNamespace(x.Namespace)
+            //             .SetValues(RootDirectory / "src" / "environments" / x.ValuesFile));
+            //     });
+            // }
         });
 }

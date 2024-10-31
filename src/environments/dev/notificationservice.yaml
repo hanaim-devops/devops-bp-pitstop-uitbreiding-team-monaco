@@ -22,7 +22,7 @@ spec:
       - env:
         - name: DOTNET_ENVIRONMENT
           value: Production
-        image: kslingerland/notificationservice:0.0.1.0-fix-build-and-setup-cluster
+        image: kslingerland/notificationservice:0.0.1
         imagePullPolicy: IfNotPresent
         name: notificationservice
       restartPolicy: Always
