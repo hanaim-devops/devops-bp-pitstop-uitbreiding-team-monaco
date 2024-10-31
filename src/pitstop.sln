@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adr", "adr", "{DE329AD2-663
 	ProjectSection(SolutionItems) = preProject
 		..\docs\adr\sentry.md = ..\docs\adr\sentry.md
 		..\docs\adr\README.md = ..\docs\adr\README.md
+		..\docs\adr\argocd.md = ..\docs\adr\argocd.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdmm", "cdmm", "{277C3590-EA35-4C6C-A38E-C9386B274023}"

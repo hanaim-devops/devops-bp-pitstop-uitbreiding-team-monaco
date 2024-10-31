@@ -37,3 +37,4 @@ We hebben de configuratie van Sentry via de SentrySdk toegevoegd in het project 
 
 - [Sentry](https://sentry.io/)
 - [Sentry .NET SDK](https://docs.sentry.io/platforms/dotnet/)
+- [Cloud Sentry](https://develop.sentry.dev/self-hosted/)
