@@ -3,3 +3,4 @@
 Hier staan alle Architecture Decision Records (ADR) van het project. Deze documenten beschrijven de belangrijkste architectuur beslissingen die zijn genomen tijdens het ontwikkelen van het project.
 
 1. [ADR-1: Sentry](sentry.md)
+2. [ADR-2: Argo CD](argocd.md)
