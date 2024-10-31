@@ -28,10 +28,8 @@ public class MaintenanceHistoryAPI : IMaintenanceHistoryAPI
             {
                 return null;
             }
-            else
-            {
-                throw;
-            }
+
+            return null;
         }
     }
 
