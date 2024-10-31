@@ -23,6 +23,6 @@ spec:
         - name: DOTNET_ENVIRONMENT
           value: Production
         image: kslingerland/invoiceservice:0.0.1
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: invoiceservice
       restartPolicy: Always
