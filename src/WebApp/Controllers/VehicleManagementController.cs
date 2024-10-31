@@ -26,14 +26,15 @@
         return await _resiliencyHelper.ExecuteResilient(async () =>
         {
             var allVehicles = await _vehicleManagementAPI.GetVehicles();
-        
+
             var vehicleDtos = new List<VehicleDTO>();
 
             foreach (var vehicle in allVehicles)
             {
+                // Attempt to retrieve maintenance history
                 var maintenanceHistory = await _maintenanceHistoryAPI.GetHistoryByLicenseNumber(vehicle.LicenseNumber);
 
-                Boolean hasMaintenanceHistory = maintenanceHistory != null;
+                bool hasMaintenanceHistory = maintenanceHistory != null;
 
                 var vehicleDto = new VehicleDTO
                 {
@@ -46,14 +47,15 @@
 
                 vehicleDtos.Add(vehicleDto);
             }
-            
+    
             var model = new VehicleManagementViewModel
             {
                 Vehicles = vehicleDtos
             };
             return View(model);
-        }, View("Offline", new VehicleManagementOfflineViewModel()));
+        },View("Offline", new VehicleManagementOfflineViewModel()));
     }
+
 
     [HttpGet]
     public async Task<IActionResult> Details(string licenseNumber)

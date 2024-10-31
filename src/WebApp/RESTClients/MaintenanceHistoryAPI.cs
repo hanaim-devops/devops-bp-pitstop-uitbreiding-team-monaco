@@ -22,13 +22,20 @@ public class MaintenanceHistoryAPI : IMaintenanceHistoryAPI
         {
             return await _restClient.GetHistoryById(id);
         }
-        catch (ApiException ex)
+        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
-            if (ex.StatusCode == HttpStatusCode.NotFound)
-            {
-                return null;
-            }
-
+            // If the ID isn't found, return null (no maintenance history)
+            return null;
+        }
+        catch (HttpRequestException) // This catches network-related issues
+        {
+            // Handle DNS issues or service unavailability
+            return null;
+        }
+        catch (Exception ex)
+        {
+            // Log other unexpected exceptions if necessary
+            Console.WriteLine($"Unexpected error: {ex.Message}");
             return null;
         }
     }
@@ -39,16 +46,21 @@ public class MaintenanceHistoryAPI : IMaintenanceHistoryAPI
         {
             return await _restClient.GetHistoryByLicenseNumber(licenseNumber);
         }
-        catch (ApiException ex)
+        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
-            if (ex.StatusCode == HttpStatusCode.NotFound)
-            {
-                return null;
-            }
-            else
-            {
-                throw;
-            }
+            // If the ID isn't found, return null (no maintenance history)
+            return null;
+        }
+        catch (HttpRequestException) // This catches network-related issues
+        {
+            // Handle DNS issues or service unavailability
+            return null;
+        }
+        catch (Exception ex)
+        {
+            // Log other unexpected exceptions if necessary
+            Console.WriteLine($"Unexpected error: {ex.Message}");
+            return null;
         }
     }
 }
