@@ -4,14 +4,14 @@ metadata:
   name: pitstop-ingress
   namespace: pitstop
   annotations:
-    #nginx.ingress.kubernetes.io/rewrite-target: /
+#    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-#   cert-manager.io/cluster-issuer: "letsencrypt-staging"
+#    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   ingressClassName: nginx
   rules:
-    - host: demo.groep1.k8s.devops.aimsites.nl
+    - host: pitstop.groep1.k8s.devops.aimsites.nl
     - http:
         paths:
           - backend:
@@ -20,4 +20,8 @@ spec:
                 port:
                   number: 7005
             pathType: ImplementationSpecific
-            path: /
+            path: /       
+#  tls:
+#    - hosts:
+#        - groep1.k8s.devops.aimsites.nl
+#      secretName: letsencrypt-cert

@@ -36,8 +36,8 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
-      - name: 'Run: Deploy'
-        run: ./src/build.cmd Deploy
+      - name: 'Run: Build, Deploy'
+        run: ./src/build.cmd Build Deploy
         env:
           DOCR_EU_DEV_PASSWORD: ${{ secrets.DOCR_EU_DEV_PASSWORD }}
           DOCR_EU_DEV_USERNAME: ${{ secrets.DOCR_EU_DEV_USERNAME }}
