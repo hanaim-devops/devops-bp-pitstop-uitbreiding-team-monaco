@@ -39,6 +39,6 @@ class Build : xBuild,
     IEnumerable<HelmChart> IDeployClusterInfra.HelmCharts =>
     [
         new("argo", "argo/argo-cd","7.6.9", "argo-cd", "argocd","https://argoproj.github.io/argo-helm", true, null),
-        new("zabbix", "zabbix-community/zabbix", "5.0.2", "zabbix", "zabbix", "https://zabbix-community.github.io/helm-zabbix/", true, null)
+        new("zabbix-community", "zabbix-community/zabbix", "5.0.2", "zabbix", "zabbix", "https://zabbix-community.github.io/helm-zabbix/", true, null)
     ];
 }

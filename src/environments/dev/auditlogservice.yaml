@@ -22,7 +22,7 @@ spec:
       - env:
         - name: DOTNET_ENVIRONMENT
           value: Production
-        image: kslingerland/auditlogservice:0.0.1.0-fix-build-and-setup-cluster
+        image: kslingerland/auditlogservice:0.0.1
         imagePullPolicy: IfNotPresent
         name: auditlogservice
       restartPolicy: Always
