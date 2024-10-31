@@ -1,4 +1,5 @@
 using Pitstop.Infrastructure.Messaging.Configuration;
+using Pitstop.MaintenanceHistoryAPI;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,9 +37,9 @@ builder.WebHost.UseSentry(o =>
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
-        {
-            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-        });
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
 
 // Add services to the container.
 
@@ -48,7 +49,9 @@ builder.Services.AddDbContext<MaintenanceHistoryContext>(options => options.UseS
 
 // add messagepublisher
 builder.Services.UseRabbitMQMessagePublisher(builder.Configuration);
-builder.Services.AddTransient<IMessageHandler, RabbitMQMessageHandler>();
+builder.Services.UseRabbitMQMessageHandler(builder.Configuration);
+
+builder.Services.AddHostedService<EventHandlerHistory>();
 
 // Register the Swagger generator, defining one or more Swagger documents
 builder.Services.AddSwaggerGen(c =>
