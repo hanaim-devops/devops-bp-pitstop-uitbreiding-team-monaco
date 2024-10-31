@@ -23,11 +23,11 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Beginner 🥱. Dit de
 
 Wij vinden dat we binnen deze categorie onzelf bevinden in Beginner 🥱. Dit denken wij omdat we voldoen aan een aantal punten die relevant zijn aan de categorie:
 
-- [ ] OA-001 Geconsolideerd platform & en technologie: ? Wat betekent dit
+- [x] OA-001 Geconsolideerd platform & en technologie: Er wordt in elk project gebruik gemaakt van C#.NET
 
 - [x] OA-101 Systeem opsplitsen in modules: Elke service is een apart project binnen de solution.
 - [x] OA-102 API-gestuurde aanpak: Er zijn meerdere API's te vinden in het project die ieder draaien op een eigen microservice & zijn eigen functionaliteit heeft.
-- [x] OA-103 (3rd party) Library management: Elk project maakt gebruik van packages die nodig zijn voor de functionaliteit van de applicatie, die staan in de `Directory.Packages.props` bestand.
+- [x] OA-103 (3rd party) Library management: Elk project maakt gebruik van (NuGet) packages die nodig zijn voor de functionaliteit van de applicatie, die staan in de `Directory.Packages.props` bestand.
 
 - [x] OA-201 Geen of minimale branching: We maken gebruik van feature branches om code te ontwikkelen.
 - [ ] OA-202 Branch by abstraction
@@ -59,7 +59,7 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 - [x] BD-204 Automatiseer meeste DB wijzigingen: Er wordt gebruik gemaakt van migraties in de API's
 - [x] BD-205 Basis pipeline, prod deploy: Er wordt op productie gedeployed doormiddel van een Nukebuild pipeline. Op (productie) omgeving wordt er gebruik gemaakt van ArgoCD om dit proces te versimpelen.
 - [ ] BD-206 Gescripte config wijzigingen
-- [ ] BD-207 Standaard proces voor alle omgevingen
+- [x] BD-207 Standaard proces voor alle omgevingen: Op elke omgeving wordt er op dezelfde manier gedeployed doormiddel van onder andere pipelines
 
 ## 🧪 Test & Verificatie
 
@@ -80,7 +80,7 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 - [ ] IR-001 Basis procesmetrics
 - [ ] IR-002 Handmatige rapportages
 
-- [ ] IR-101 Meet het proces
+- [x] IR-101 Meet het proces: (??) Monitoringstool Zabbix is toegepast om de gehele applicatie te kunnen meten op verschillende dingen
 - [ ] IR-102 Statische code analyse
 - [ ] IR-103 Periodieke automatisch kwaliteitsrapportage
 
