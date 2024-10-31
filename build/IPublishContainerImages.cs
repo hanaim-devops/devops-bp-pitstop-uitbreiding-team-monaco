@@ -66,7 +66,7 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
             DockerTasks.DockerSave(config => config.AddImages(tags)
                 .SetOutput(ArtifactsDirectory / "images.tar"));
             
-            UploadArchiveArtifact("images", ArchiveFormat.Tar);
+            //UploadArchiveArtifact("images", ArchiveFormat.Tar);
         });
 
     /// <summary>
@@ -80,7 +80,7 @@ public interface IPublishContainerImages : IArtifacts, IDotNet, IGitRepository
         .Executes(() =>
         {
             DockerTasks.DockerLoad(config =>
-                config.SetInput(GetArchiveArtifact("images", ArchiveFormat.Tar)).SetQuiet(true));
+                config.SetInput(ArtifactsDirectory / "images.tar").SetQuiet(true));
 
             var tags = Images.SelectMany(i => i.Value.Tags).ToArray();
 

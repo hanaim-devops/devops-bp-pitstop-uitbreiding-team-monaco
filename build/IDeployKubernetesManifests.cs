@@ -7,9 +7,7 @@ using Nuke.Common.Tools.Kubernetes;
 
 public interface IDeployKubernetesManifests : IGitRepository
 {
-    AbsolutePath KubernetesManifestDirectory => RootDirectory / "k8s";
-    AbsolutePath ArgoCdEnvironmentsDirectory => RootDirectory / "src" / "environments";
-    AbsolutePath LegacyStartScriptDirectory => KubernetesManifestDirectory / "scripts";
+    AbsolutePath KubernetesManifestDirectory => RootDirectory / "src" / "k8s";
     
     Target DeployManifests => _ => _
         .TryTriggeredBy<xBuild>(x => x.Deploy)
@@ -18,7 +16,7 @@ public interface IDeployKubernetesManifests : IGitRepository
         .Executes(() =>
         {
             KubernetesTasks.KubernetesApply(s => s
-                .SetFilename(ArgoCdEnvironmentsDirectory / "application.dev.yaml"));
+                .SetFilename(KubernetesManifestDirectory));
         });
     
 }

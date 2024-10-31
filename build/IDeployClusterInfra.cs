@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Components;
@@ -7,15 +8,20 @@ using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.Helm;
 using Nuke.Common.Tools.Kubernetes;
+using Nuke.Common.Utilities.Collections;
 using Serilog;
 
 public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
 {
-    AbsolutePath HelmChartDirectory => RootDirectory / "charts";
-    AbsolutePath ArgoCdValuesDirectory => RootDirectory / "src" / "environments";
+    AbsolutePath HelmChartDirectory => RootDirectory / "src" / "k8s" / "charts";
+    
+    AbsolutePath HelmValuesDirectory => HelmChartDirectory / "values";
+    
     string LocalClusterContext => "docker-desktop";
     
     string ServerClusterContext => "server-cluster";
+
+    IEnumerable<HelmChart> HelmCharts => new List<HelmChart>();
     
     Target ClusterAuthentication => _ => _
         .TryTriggeredBy<xBuild>(x => x.Deploy)
@@ -57,20 +63,23 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
         {
             HelmTasks.Helm($"version --client");
             
-            HelmTasks.HelmRepoAdd(_ => _
-                .SetName("argo")
-                .SetUrl("https://argoproj.github.io/argo-helm"));
-            
-            HelmTasks.HelmUpgrade(s => s
-                .SetRelease("argo-cd")
-                .SetChart("argo/argo-cd")
-                .SetVersion("7.6.9")
-                .SetNamespace("argocd")
-                .SetCreateNamespace(true)
-                .SetValues(ArgoCdValuesDirectory / "values-argo-cd.yaml")
-                .EnableInstall()
-                .SetWait(true)
-            );
+            HelmCharts.ForEach(x =>
+            {
+                HelmTasks.HelmRepoAdd(_ => _
+                    .SetName(x.Name)
+                    .SetUrl(x.Repository));
+                
+                HelmTasks.HelmUpgrade(s => s
+                    .SetRelease(x.Release)
+                    .SetChart(x.Chart)
+                    .SetVersion(x.Version)
+                    .SetNamespace(x.Namespace)
+                    .SetCreateNamespace(x.CreateNamespace)
+                    .SetValues(HelmValuesDirectory / x.ValuesFile)
+                    .EnableInstall()
+                    .SetWait(true)
+                );
+            });
             
             if (IsLocalBuild)
             {
@@ -83,12 +92,14 @@ public interface IDeployClusterInfra : IGitRepository, IArtifacts, IVersion
 
                 Log.Information($"Argo CD initial admin password: {decodedSecret}");
 
-                HelmTasks.HelmUpgrade(s => s
-                    .SetRelease("argo-cd")
-                    .SetChart("argo/argo-cd")
-                    .SetNamespace("argocd")
-                    .SetValues(ArgoCdValuesDirectory / "argocd-values.yaml")
-                );
+                HelmCharts.ForEach(x =>
+                {
+                    HelmTasks.HelmUpgrade(s => s
+                        .SetRelease(x.Release)
+                        .SetChart(x.Chart)
+                        .SetNamespace(x.Namespace)
+                        .SetValues(RootDirectory / "src" / "environments" / x.ValuesFile));
+                });
             }
         });
 }
