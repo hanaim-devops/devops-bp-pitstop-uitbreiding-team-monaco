@@ -1,19 +1,13 @@
-# Eigen bijdrage <mijn-naam>
+# Eigen bijdrage Luuk Lentjes
 
-Als deliverable voor de individuele bijdrage in het beroepsproduct maak een eigen markdown bestand `<mijn-voornaam>.md` in je repo aan met tekst inclusief linkjes naar code en documentaties bestanden, pull requests, commit diffs. Maak hierin de volgende kopjes met een invulling.
-
-Je schrapt verder deze tekst en vervangt alle andere template zaken, zodat alleen de kopjes over blijven. **NB: Aanwezigheid van template teksten na inleveren ziet de beoordelaar als een teken dat je documentatie nog niet af is, en hij/zij deze dus niet kan of hoeft te beoordelen**.
-
-Je begin hier onder het hoofdkopje met een samenvatting van je bijdrage zoals je die hieronder uitwerkt. Best aan het einde schrijven. Zorg voor een soft landing van de beoordelaar, maar dat deze ook direct een beeld krijgt. Je hoeft geen heel verslag te schrijven. De kopjes kunnen dan wat korter met wat bullet lijst met links voor 2 tot 4 zaken en 1 of 2 inleidende zinnen erboven. Een iets uitgebreidere eind conclusie schrijf je onder het laatste kopje.
-
+## Samenvatting van mijn bijdrage
+Ik heb vanuit mijn DevOps-rol verschillende taken uitgevoerd in dit project, zoals het opzetten van de maintenancehistory API, het configureren van de applicatie in containers en Kubernetes, en het toepassen van Argo CD voor continue integratie en delivery. Daarnaast heb ik onderzoek gedaan naar Argo CD en heb ik een C4-model en ADR-documentatie opgesteld om mijn aanpak en keuzes te verantwoorden. Mijn bijdrage aan code reviews en scrum-ceremonies heeft de kwaliteit van het project ondersteund.
 
 ## 1. Code/platform bijdrage
 
 Competenties: *DevOps-1 Continuous Delivery*
 
-Beschrijf hier kort je bijdrage vanuit je rol, developer (Dev) of infrastructure specialist (Ops). Als Developer beschrijf en geef je links van minimaal 2 en maximaal 4 grootste bijdrages qua code functionaliteiten of non-functionele requirements. Idealiter werk je TDD (dus ook commit van tests en bijbehorende code tegelijk), maar je kunt ook linken naar geschreven automatische tests (unit tests, acceptance tests (BDD), integratie tests, end to end tests, performance/load tests, etc.).
-
-Als dev heb ik de opzet gemaakt van de nieuwe service die we hebben toegevoegd. Namelijk de maintanacehistory api die de historie van de onderhoudsbeurten van de auto's bijhoudt. Ik heb de service opgezet en via rabbitMQ messages de history opgeslagen naar de database. Daarbij horen deze commits:
+Als developer heb ik de MaintenanceHistory API opgezet, een nieuwe service die de onderhoudshistorie van auto’s bijhoudt. Ik heb hierbij de configuratie opgezet om history-gegevens via RabbitMQ messages op te slaan in de database. Bij deze werkzaamheden horen de volgende commits:
 - [Commit 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/f0739226d69d42faca72ce0fd881a5813a84968d)
 - [Commit 2](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/99f53eec8c3feaed7140eca977749031f836d547)
 
@@ -21,115 +15,76 @@ Als dev heb ik de opzet gemaakt van de nieuwe service die we hebben toegevoegd. 
 
 Competenties: *DevOps-2 Orchestration, Containerization*
 
-Beschrijf en geef hier links naar je minimaal 2 en maximaal 4 grootste bijdragen qua configuratie, of bijdrage qua 12factor app of container Dockerfiles en/of .yml bestanden of vergelijkbare config (rondom containerization en orchestration).
+In dit project heb ik de Dockerfile voor de MaintenanceHistory-service opgesteld en deze werkend gemaakt in een container voor gebruik binnen Kubernetes. In de laatste commit heb ik Argo CD geconfigureerd met een nodeport om de applicatie lokaal op een andere poort te draaien.
 
-In deze commits staan de toepassingen van de maintanencehistory Docker file om dit werkend te krijgen in een container en later te gebruiken in kubernetes.
-In de laatste commit wordt de configuratie van argocd aangepast met een nodeport om de applicatie lokaal op een andere poort te kunnen draaien.
-
-Daarbij heb ik de volgende commits gedaan:
+Bij deze configuraties horen de volgende commits:
 - [Commit 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/060c167769de080402c0ae8969bfb4e78d7b7a8c)
 - [Commit 2](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/a6fbc02acfb4a3b18a317b16a6be5dfa5c38c5a3)
 - [Commit 3](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/cb930cb7ace8bc049f8f5e102d3b2e0f7eb58044)
+
 ## 3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
 
 Competenties: *DevOps-1 - Continuous Delivery*, *DevOps-3 GitOps*, *DevOps-5 - SlackOps*
 
-Beschrijf hier en geef links naar je bijdragen aan het opzetten en verder automatiseren van delivery pipeline, GitOps toepassing en/of het opzetten van monitoring, toevoegen van metrics en custom metrics en rapportages.
+In de CI/CD pipeline heb ik een stap toegevoegd om Argo CD lokaal te laten deployen op een andere poort. Dit maakt lokaal testen en ontwikkelen efficiënter.
 
-NB Het gebruik van *versiebeheer* ((e.g. git)) hoort bij je standaardtaken en deze hoef je onder dit punt NIET te beschrijven, het gaat hier vooral om documenteren van processtandaarden, zoals toepassen van een pull model.
-
-In de pipelione heb ik een een stap toegevoegd om argocd lokaal te laten deployen op een andere poort.
-
-Daar hoort deze commit bij:
+Bij deze wijziging hoort de volgende commit:
 - [Commit 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/f1d949712e4566a625e133758154be62679cefed)
 
 ## 4. Onderzoek
 
 Competenties: *Nieuwsgierige houding*
 
-Beschrijf hier voor het Course BP kort je onderzochte technologie met een link naar je blog post, of het toepassen ervan gelukt is en hoe, of waarom niet. Beschrijf evt. kort extra leerervaringen met andere technologieen of verdieping sinds het blog.
+Mijn onderzoek richtte zich op Argo CD, een declaratieve GitOps-tool die continue delivery binnen Kubernetes ondersteunt. Argo CD vereenvoudigt het applicatiebeheer door het gewenste eindresultaat te definiëren en dit automatisch te beheren. Meer informatie is beschikbaar in mijn blogpost: [Argo CD Blog](https://github.com/hanaim-devops/devops-blog-luuk-lentjes/blob/main/src/dev-blog-argo-cd-binnen-gitops-processen-en-kubernetes/README.md).
 
-Tijdens het grote project beschrijf je hier onderzoek naar het domein en nieuwe onderzochte/gebruikte DevOps technologieën. Wellicht heb je nogmaals de voor blog onderzochte technologie kunnen toepassen in een andere context. Verder heb je nu een complex domein waar je in moet verdiepen en uitvragen bij de opdrachtgever. Link bijvoorbeeld naar repo's met POC's of, domein modellen of beschrijf andere onderwerpen en link naar gebruikte bronnen.
-
-Als de tijdens course onderzochte technologie wel toepasbaar is kun je dit uiteraard onder dit punt noemen. Of wellicht was door een teamgenoot onderzochte technologie relevant, waar jij je nu verder in verdiept hebt en mee gewerkt hebt, dus hier kunt beschrijven. Tot slot kun je hier ook juist een korte uitleg geef over WAAROM  jouw eerder onderzochte technologie dan precies niet relevant of inpasbaar was. Dit is voor een naieve buitenstaander niet altijd meteen duidelijk, maar kan ook heel interessant zijn. Bijvoorbeeld dat [gebruik van Ansible in combi met Kubernetes](https://www.ansible.com/blog/how-useful-is-ansible-in-a-cloud-native-kubernetes-environment) niet handig blijkt. Ook als je geen uitgebreid onderzoek hebt gedaan of ADR hebt waar je naar kunt linken, dan kun je onder dit kopje wel alsnog kort conceptuele kennis duidelijk maken.
-
-Het onderzoek dat ik toegepast heb is ArgoCD. Argo CD is een declaratieve GitOps-tool die continue delivery binnen Kubernetes ondersteunt. Dat betekent dat je de gewenste eindtoestand beschrijft van je applicatie en infrastructuur, zonder dat je stap-voor-stap- handelingen uitvoert om die te bereiken. Argo CD automatiseert, controleert en vereenvoudigt applicatiedeployments en lifecycle management, waardoor het eenvoudig blijft om te gebruiken.
-Om meer informatie te krijgen kan je vinden op mijn blog post [Argo CD Blog](https://github.com/hanaim-devops/devops-blog-luuk-lentjes/blob/main/src/dev-blog-argo-cd-binnen-gitops-processen-en-kubernetes/README.md). 
-
-Ik heb geleerd dat argocd ook automatisch images kan updaten als er een nieuwe versie is. Namelijk [image updater argocd](https://argocd-image-updater.readthedocs.io/en/stable/) Deze functionaliteit heb ik niet toegepast in het project, omdat ik niet genoeg tijd had om dit toe te passen en de functionaliteit nog beta is. 
-
-
+In dit project heb ik Argo CD ingezet om de applicatie te deployen. Details over de keuze en implementatie staan in mijn [ADR](../adr/argocd.md). Daarnaast heb ik een klein deel van Kevin's onderzoek over Nuke Build toegepast in de pipeline, waarmee Argo CD op een andere poort bereikbaar werd gemaakt. Ik ontdekte dat Argo CD automatisch images kan updaten bij nieuwe releases, maar dit heb ik wegens tijdgebrek niet toegepast.
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
 
 Competenties: *DevOps-7 - Attitude*, *DevOps-4 DevSecOps*
 
-Beschrijf hier en geef links naar de minimaal 2 en maximaal 4 grootste *review acties* die je gedaan hebt, bijvoorbeeld pull requests incl. opmerkingen. Het interessantst zijn natuurlijk gevallen waar code niet optimaal was. Zorg dat je minstens een aantal reviews hebt waar in gitlab voor een externe de kwestie ook duidelijk is, in plaats van dat je dit altijd mondeling binnen het team oplost.
+Gedurende dit project heb ik de volgende pull requests gereviewed:
+- [PR 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/58)
+- [PR 2](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/65)
+- [PR 3](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/64)
+- [PR 4](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/45)
+
+Deze reviews werden vaak gecombineerd met pair programming om direct feedback te geven en verbeteringen door te voeren.
 
 ## 6. Bijdrage documentatie
 
 Competenties: *DevOps-6 Onderzoek*
 
-Zet hier een links naar en geef beschrijving van je C4 diagram of diagrammen, README of andere markdown bestanden, ADR's of andere documentatie. Bij andere markdown bestanden of doumentatie kun je denken aan eigen proces documentatie, zoals code standaarden, commit- of branchingconventies. Tot slot ook user stories en acceptatiecriteria (hopelijk verwerkt in gitlab issues en vertaalt naar `.feature` files) en evt. noemen en verwijzen naar handmatige test scripts/documenten.
+Ik heb het C4-model opgesteld, inclusief het container- en componentdiagram, om een duidelijk overzicht te bieden van de architectuur. Deze werkzaamheden zijn gedocumenteerd in de volgende commits:
+- [Commit 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/3ac5bba21b905381a507236558c04dba01e432ab)
+- [Commit 2](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/97f08193b93eed381734c1ac9c674604ca7a5f58)
+
+Daarnaast heb ik een ADR geschreven over Argo CD:
+- [Commit 1](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/commit/97f08193b93eed381734c1ac9c674604ca7a5f58)
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 
 Competenties: *DevOps-1 - Continuous Delivery*, *Agile*
 
-Beschrijf hier minimaal 2 en maximaal 4 situaties van je inbreng en rol tijdens Scrum ceremonies. Beschrijf ook feedback of interventies tijdens Scrum meetings, zoals sprint planning of retrospective die je aan groespgenoten hebt gegeven.
-
-Beschrijf tijdens het project onder dit kopje ook evt. verdere activiteiten rondom communicatie met de opdrachtgever of domein experts, of andere meer 'professional skills' of 'soft skilss' achtige zaken.
+Tijdens scrum-meetings heb ik een keer notulen gemaakt en een vergadering geleid. Toen ik voorzitter was heb ik het gesprek alleen geintroduceerd en Kevin het woord gaf, omdat ik die dag niet goed voelde. 
+Het notuleren vergde scherpte en nauwkeurigheid, omdat ik het gesprek goed moest volgen en de informatie ook nog begrijpen. Daarbij ben ik ook niet z'n sneller typer, dus dat was een uitdaging.
 
 ## 8. Leerervaringen
 
 Competenties: *DevOps-7 - Attitude*
 
-Geef tot slot hier voor jezelf minimaal 2 en maximaal **4 tops** en 2 dito (2 tot 4) **tips** á la professional skills die je kunt meenemen in je verdere loopbaan. Beschrijf ook de voor jezelf er het meest uitspringende hulp of feedback van groepsgenoten die je (tot dusver) hebt gehad tijdens het project.
+### Tops
+- Ik heb veel geleerd over Argo CD en de toepassing ervan in een project.
+- Het opstellen en implementeren van een C4-model was een waardevolle leerervaring.
+
+### Tips
+- Ik had meer aandacht kunnen besteden aan code reviews, vooral op het gebied van tests.
+- Ik had de dagelijkse stand-ups actiever kunnen bevorderen; deze werden niet altijd gehouden, waardoor we soms minder inzicht hadden in elkaars werk.
 
 ## 9. Conclusie & feedback
 
-Competenties: *DevOps-7 - Attitude*
+In dit project heb ik veel nieuwe technologieën gebruikt en toegepast in de applicaite. Ik heb het meeste geleerd hoe ik tools zoals Argo CD en RabbitMQ kan integreren in een .NET-project en hoe belangrijk het is om duidelijke communicatie tussen microservices op te zetten. Het werken in een team was fijn, omdat we elkaar al goed kenden en we wisten wat we van elkaar konden verwachten.
 
-Schrijf een conclusie van al bovenstaande punten. En beschrijf dan ook wat algemener hoe je terugkijkt op het project. Geef wat constructieve feedback, tips aan docenten/beoordelaars e.d. En beschrijf wat je aan devops kennis, vaardigheden of andere zaken meeneemt naar je afstudeeropdracht of verdere loopbaan.
+Een belangrijke les is dat het toevoegen van nieuwe tools of services soms moeilijker kan zijn dan het lijkt, vooral als je deze moet aanpassen binnen een bestaande codebase. Daarnaast heb ik gemerkt hoe handig het is om regelmatig korte updates te doen in daily stand-ups, zodat iedereen op de hoogte blijft van elkaars werk. Dit helpt om het overzicht te bewaren en problemen sneller op te lossen.
 
-
-### Code/platform bijdrage
-
-1. DevOps-1 Continuous Delivery
-    - CDMM: Design & Architecture
-    - CDMM: Test & Verification
-
-2. Bijdrage app configuratie/containers/Kubernetes
-    - DevOps-2 Orchestration
-    - DevOps-4 Containerization
-    - CDMM: Design & Architecture
-
-3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
-    - DevOps-3 GitOps
-    - DevOps-5 SlackOps
-    - CDMM: Information & Reporting
-    - CDMM: Test & Verification
-    - CDMM: Build & Deploy
-
-4. Onderzoek
-    - DevOps-6 Onderzoek
-
-5. Bijdrage code review/kwaliteit anderen en security
-    - DevOps-4 DevSecOps
-    - CDMM: Culture&Organization
-    - CDMM: Test & Verification
-
-6. Bijdrage documentatie
-    - CDMM: Design & Architecture
-    - DevOps-6 Onderzoek
-
-7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
-    - DevOps-7 Attitude*
-    - CDDM: Culture & Organization
-
-8. Leerervaringen
-    - DevOps-7 Attitude
-    - CDDM: Culture & Organization
-
-9. Conclusie & feedback
-    - DevOps-7 Attitude
+Kortom, dit project heeft mijn technische vaardigheden verbeterd en me beter laten begrijpen hoe DevOps-processen zoals Continuous Delivery, GitOps en monitoring werken in een echte omgeving.
