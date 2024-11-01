@@ -1,112 +1,105 @@
-# Eigen bijdrage <mijn-naam>
+# Eigen bijdrage Kevin Slingerland
 
-Als deliverable voor de individuele bijdrage in het beroepsproduct maak een eigen markdown bestand `<mijn-voornaam>.md` in je repo aan met tekst inclusief linkjes naar code en documentaties bestanden, pull requests, commit diffs. Maak hierin de volgende kopjes met een invulling.
-
-Je schrapt verder deze tekst en vervangt alle andere template zaken, zodat alleen de kopjes over blijven. **NB: Aanwezigheid van template teksten na inleveren ziet de beoordelaar als een teken dat je documentatie nog niet af is, en hij/zij deze dus niet kan of hoeft te beoordelen**.
-
-Je begin hier onder het hoofdkopje met een samenvatting van je bijdrage zoals je die hieronder uitwerkt. Best aan het einde schrijven. Zorg voor een soft landing van de beoordelaar, maar dat deze ook direct een beeld krijgt. Je hoeft geen heel verslag te schrijven. De kopjes kunnen dan wat korter met wat bullet lijst met links voor 2 tot 4 zaken en 1 of 2 inleidende zinnen erboven. Een iets uitgebreidere eind conclusie schrijf je onder het laatste kopje.
-
+In dit project heb ik mij vooral gericht op het verbeteren en automatiseren van de DevOps-processen, met nadruk op CI/CD, containerisatie en infrastructuurbeheer. Door het toepassen van Nuke Build en het opzetten van Kubernetes-manifests heb ik bijgedragen aan een schaalbare en efficiënte workflow voor de applicatie-ontwikkeling en deployment. Mijn inzicht in nieuwe technologieën en mijn proactieve houding hebben de samenwerking binnen het team bevorderd en de algehele kwaliteit van het project verhoogd.
 
 ## 1. Code/platform bijdrage
 
 Competenties: *DevOps-1 Continuous Delivery*
 
-Beschrijf hier kort je bijdrage vanuit je rol, developer (Dev) of infrastructure specialist (Ops). Als Developer beschrijf en geef je links van minimaal 2 en maximaal 4 grootste bijdrages qua code functionaliteiten of non-functionele requirements. Idealiter werk je TDD (dus ook commit van tests en bijbehorende code tegelijk), maar je kunt ook linken naar geschreven automatische tests (unit tests, acceptance tests (BDD), integratie tests, end to end tests, performance/load tests, etc.). Als Opser geef je je minimaal 2 maximaal 4 belangrijkste bijdragen aan het opzetten van het Kubernetes platform, achterliggende netwerk infrastructuur of configuration management (MT) buiten Kubernetes (en punt 2).
+Binnen dit beroepsproduct ben ik vooral werkzaam geweest als *Infrastructuur Specialist (Ops)*, Ik heb mij bezig gehouden met het opzetten van de build & deployment stappen en hier tevens ook mijn onderzoek naar Nuke Build toegepast.
+
+[PR: Opzetten Nuke Build & Deploy](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/32/files)
+
+[PR: Opzetten Basis Deployment Kubernetes Manifests](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/43/files)
+
+Verder heb ik meegekeken met mijn team in het uitwerken en opzetten van de architectuur weiziging en de nieuwe microservice. Verder ben ik bezig geweest met het opsplitsen en refactoren van verschillende onderdelen in de applicatie.
+
+[PR: Refactor to stand-alone microservice](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/70/files)
 
 ## 2. Bijdrage app configuratie/containers/kubernetes
 
 Competenties: *DevOps-2 Orchestration, Containerization*
 
-Beschrijf en geef hier links naar je minimaal 2 en maximaal 4 grootste bijdragen qua configuratie, of bijdrage qua 12factor app of container Dockerfiles en/of .yml bestanden of vergelijkbare config (rondom containerization en orchestration).
+Ik heb voor de nieuwe microservice een Kubernetes resource gedefineerd, ook is de build zo opgezet dat container applicaties automatisch kunnen worden gebouwd als dit is ingesteld met een tag `<IsContainerApp>true</IsContainerApp>` in de .csproj.
+
+[PR: Add Kubernetes Resource & Mark App as ContainerApp](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/63/files)
+
+Om onze build zo soepel mogelijk te laten verlopen worden onze images gebuild en gepublished in de pipeline, dit gebeurd automatisch wanneer de build `IPublishContainerImages` implementeerd. Hierin worden ook alle images getagged en de base images gebuild.
+
+[PR: Setup IPublishContainerImages](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/32/files#diff-7711300ea4e21be65578aac1e8b1ca73a13d608dff9e6568fda85ae6f66a338b)
 
 ## 3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
 
 Competenties: *DevOps-1 - Continuous Delivery*, *DevOps-3 GitOps*, *DevOps-5 - SlackOps*
 
-Beschrijf hier en geef links naar je bijdragen aan het opzetten en verder automatiseren van delivery pipeline, GitOps toepassing en/of het opzetten van monitoring, toevoegen van metrics en custom metrics en rapportages.
+Binnen ons product is er gebruik gemaakt van een pull model en short lived branches, dit heb ik opgezet door een aantal branch protection rules toe te passen binnen onze GitHub repo, hierdoor heb ik ook afgedwongen dat er een liniaire Git history is ontstaan met behulp van reabasen. Dit zorgt er voor dat ieder issue in principe 1 commit op de master branch word waardoor er goed terug te zien is wat er per issue is aangepast.
 
-NB Het gebruik van *versiebeheer* ((e.g. git)) hoort bij je standaardtaken en deze hoef je onder dit punt NIET te beschrijven, het gaat hier vooral om documenteren van processtandaarden, zoals toepassen van een pull model.
+Binnen onze pipeline worden ook een aantal monitoring applicaties uitgerold zoals Zabbix en ArgoCD, hiervoor word er gebruik gemaakt van helm charts en deze configuratie word ook automatisch uitgerold.
+
+[PR: Setup Deployment for Helm Charts & Config](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/58/files)
 
 ## 4. Onderzoek
 
 Competenties: *Nieuwsgierige houding*
 
-Beschrijf hier voor het Course BP kort je onderzochte technologie met een link naar je blog post, of het toepassen ervan gelukt is en hoe, of waarom niet. Beschrijf evt. kort extra leerervaringen met andere technologieen of verdieping sinds het blog.
+Binnen het beroeps product heb ik mijn technologie Nuke Build toegepast, zoals al eerder gelezen is dit op een breed scala aan taken ingezet waaronder het uitrollen van applicaties, kubernetes manifesten, statische code analyse of het uitvoeren van testen.
 
-Tijdens het grote project beschrijf je hier onderzoek naar het domein en nieuwe onderzochte/gebruikte DevOps technologieën. Wellicht heb je nogmaals de voor blog onderzochte technologie kunnen toepassen in een andere context. Verder heb je nu een complex domein waar je in moet verdiepen en uitvragen bij de opdrachtgever. Link bijvoorbeeld naar repo's met POC's of, domein modellen of beschrijf andere onderwerpen en link naar gebruikte bronnen.
+[DeOps Blog: Supercharge your workflow with Nuke Build](https://github.com/hanaim-devops/devops-blog-KSlingerland/tree/main/src/nuke-build-supercharge-your-workflow)
 
-Als de tijdens course onderzochte technologie wel toepasbaar is kun je dit uiteraard onder dit punt noemen. Of wellicht was door een teamgenoot onderzochte technologie relevant, waar jij je nu verder in verdiept hebt en mee gewerkt hebt, dus hier kunt beschrijven. Tot slot kun je hier ook juist een korte uitleg geef over WAAROM  jouw eerder onderzochte technologie dan precies niet relevant of inpasbaar was. Dit is voor een naieve buitenstaander niet altijd meteen duidelijk, maar kan ook heel interessant zijn. Bijvoorbeeld dat [gebruik van Ansible in combi met Kubernetes](https://www.ansible.com/blog/how-useful-is-ansible-in-a-cloud-native-kubernetes-environment) niet handig blijkt. Ook als je geen uitgebreid onderzoek hebt gedaan of ADR hebt waar je naar kunt linken, dan kun je onder dit kopje wel alsnog kort conceptuele kennis duidelijk maken.
+Binnen dit beroepsproduct was het doel om de bestaande manier van builden en deployen te vervangen door Nuke Targets gedefineerd in C# code. Het ging hier vooral om de script om de docker images te builden en het applyen van kubernetes manifesten.
+
+Ook kwamen we er achter dat het uitrollen van verschillende applicaties zoals argo-cd en zabbix goed te doen was via een pipeline en hierdoor deze configuratie ook een stuk beter te beheren was.
+
+Het grootste leer punt zal bij Nuke zijn om niet door te slaan in de opzet, de verschillende onderdelen zijn nu opgeknipt in herbruikbare losstaande onderdelen hier heb ik redelijk wat tijd aan besteed maar dit was achteraf gezien mischien helemaal nier nodig aangezien het hier om 1 pipeline ging voor 1 project dat 2 weken heeft geduurd. Wel zou ik nu deze onderdelen los kunnen trekken naar een eigen repository.
+
+[GitHub Repo: Build Compoenents](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/tree/master/build)
+
+_Verbetering voor volgens project_
+
+Alle functionaliteit is nu binnen deze repository gemaakt, voor een volgens project zou ik deze code graag in een losse repository hebben staan en dat deze components dan gepublished als package te gerbuiken zijn in verschillende projecten.
+
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
 
 Competenties: *DevOps-7 - Attitude*, *DevOps-4 DevSecOps*
 
-Beschrijf hier en geef links naar de minimaal 2 en maximaal 4 grootste *review acties* die je gedaan hebt, bijvoorbeeld pull requests incl. opmerkingen. Het interessantst zijn natuurlijk gevallen waar code niet optimaal was. Zorg dat je minstens een aantal reviews hebt waar in gitlab voor een externe de kwestie ook duidelijk is, in plaats van dat je dit altijd mondeling binnen het team oplost.
+Binnen dit beroepsproduct heb ik helaas geen review achter gelaten op een PR, wel is er tijdens de ontwikkeling doorgaans overleg geweest over hoe bepaalde zalen zoals het opzetten van de architectuur weiziging zou kunnen worden uitgevoerd en hier heb ik dan ook inspraak in gehad en mijn feeback op gegeven.
 
 ## 6. Bijdrage documentatie
 
 Competenties: *DevOps-6 Onderzoek*
 
-Zet hier een links naar en geef beschrijving van je C4 diagram of diagrammen, README of andere markdown bestanden, ADR's of andere documentatie. Bij andere markdown bestanden of doumentatie kun je denken aan eigen proces documentatie, zoals code standaarden, commit- of branchingconventies. Tot slot ook user stories en acceptatiecriteria (hopelijk verwerkt in gitlab issues en vertaalt naar `.feature` files) en evt. noemen en verwijzen naar handmatige test scripts/documenten.
+[ADR: Nuke Build & GitHub Actions](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/68/files)
+
+[Aanvullingen CDMM](https://github.com/hanaim-devops/devops-bp-pitstop-uitbreiding-team-monaco/pull/75/files)
+
+Ik heb kwa documentatie een ADR geschreven voor het gebruik van Nuke Build in combinatie met GitHub Actions en verder gedurende het ontwikkelen gezorgd dat het CDMM werd aangevuld met de benodigde informatie. Verder hebben we gazamelijk gekeken naar het C4 Model.
+
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 
 Competenties: *DevOps-1 - Continuous Delivery*, *Agile*
 
-Beschrijf hier minimaal 2 en maximaal 4 situaties van je inbreng en rol tijdens Scrum ceremonies. Beschrijf ook feedback of interventies tijdens Scrum meetings, zoals sprint planning of retrospective die je aan groespgenoten hebt gegeven.
+Binnen het broepsproduct hebben wij meer Kanban gewerkt dan scrum, gezien de korte doorlooptijd en de hoeveelheid wisselend werk en onvoorspelbaarheid was het logischer om per momnent te kijken welke taken konden worden opgepakt en uitgevroerd dan dit vooraf vast te stellen met een sprint planning.
 
-Beschrijf tijdens het project onder dit kopje ook evt. verdere activiteiten rondom communicatie met de opdrachtgever of domein experts, of andere meer 'professional skills' of 'soft skilss' achtige zaken.
+Ik ben eenmaal notulist geweest tijdens de retrospective maar hier ook redelijke inbreng gehad in de onderwerpen die aangekaart zijn zoals de invulling van het CDMM en de hoeveelheid werk en de onvoorspelbaarheid van de eerste peoject week
+
+Andere keren heb ik of invulling gegeven aan de meeting door een controlerende en oplettende houding aan te nemen, zoals het corrigeren wanneer en mis verstanden ontstaan of het verduidelijken van vragen binnen de meetings.
 
 ## 8. Leerervaringen
 
 Competenties: *DevOps-7 - Attitude*
 
-Geef tot slot hier voor jezelf minimaal 2 en maximaal **4 tops** en 2 dito (2 tot 4) **tips** á la professional skills die je kunt meenemen in je verdere loopbaan. Beschrijf ook de voor jezelf er het meest uitspringende hulp of feedback van groepsgenoten die je (tot dusver) hebt gehad tijdens het project.
+Een van de punten waar ik aan moet werken is het maken van keinere PR's en het opspliten van functionaliteit in kleine brokjes
+
+Verbeter de documentatie en communicatie rondom PR's om teamleden te helpen het werk makkelijker te volgen en te beoordelen.
+
+Een punt dat ik meeneem is dat ik erg snel thuis kan zijn in een nieuwe code base en altijd wel mogelijkheden voor verbetering zie
+
+Mijn inzet om nieuwe tools zoals Nuke Build te leren en effectief toe te passen, heeft gezorgd voor verbeterde automatisering en procesoptimalisatie.
 
 ## 9. Conclusie & feedback
 
 Competenties: *DevOps-7 - Attitude*
 
-Schrijf een conclusie van al bovenstaande punten. En beschrijf dan ook wat algemener hoe je terugkijkt op het project. Geef wat constructieve feedback, tips aan docenten/beoordelaars e.d. En beschrijf wat je aan devops kennis, vaardigheden of andere zaken meeneemt naar je afstudeeropdracht of verdere loopbaan.
-
-
-### Code/platform bijdrage
-
-1. DevOps-1 Continuous Delivery
-    - CDMM: Design & Architecture
-    - CDMM: Test & Verification
-
-2. Bijdrage app configuratie/containers/Kubernetes
-    - DevOps-2 Orchestration
-    - DevOps-4 Containerization
-    - CDMM: Design & Architecture
-
-3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
-    - DevOps-3 GitOps
-    - DevOps-5 SlackOps
-    - CDMM: Information & Reporting
-    - CDMM: Test & Verification
-    - CDMM: Build & Deploy
-
-4. Onderzoek
-    - DevOps-6 Onderzoek
-
-5. Bijdrage code review/kwaliteit anderen en security
-    - DevOps-4 DevSecOps
-    - CDMM: Culture&Organization
-    - CDMM: Test & Verification
-
-6. Bijdrage documentatie
-    - CDMM: Design & Architecture
-    - DevOps-6 Onderzoek
-
-7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
-    - DevOps-7 Attitude*
-    - CDDM: Culture & Organization
-
-8. Leerervaringen
-    - DevOps-7 Attitude
-    - CDDM: Culture & Organization
-
-9. Conclusie & feedback
-    - DevOps-7 Attitude
+Het project heeft mijn DevOps-vaardigheden versterkt, met een focus op infrastructuur, CI/CD, en het toepassen van Nuke Build voor geautomatiseerde workflows. Ik kijk positief terug op het project vanwege de kansen om nieuwe technologieën te leren en effectief samen te werken binnen een team. Een belangrijk inzicht was het belang van kleinere PR's en meer gestroomlijnde reviews. Ik neem deze kennis en ervaring mee naar mijn afstudeeropdracht en toekomstige rollen, met een sterke basis in automatisering en procesoptimalisatie.
