@@ -109,46 +109,6 @@ Tips:
 
 Competenties: *DevOps-7 - Attitude*
 
-Ik heb wel wat geleerd van dit project, Sentry integreren binnen een C# project is net zo makkelijk als een Node.js project. Een nieuwe service toevoegen ging toch nog iets lastiger dan verwacht. 
-Het werken in een bekend team is fijn, wat vaker daily stand-ups doen is wel een verbeterpunt voor de volgende keer. Iedereen weet wat je van elkaar kan verwachten en dat geeft wel een fijne sfeer.
+Dit project heeft me waardevolle inzichten gegeven. Ik heb bijvoorbeeld geleerd dat het integreren van Sentry binnen een C#-project vergelijkbaar is met hoe dit werkt in Node.js-projecten. De ervaring heeft ook aangetoond dat het toevoegen van een nieuwe service complexer kan zijn dan verwacht, vooral binnen een bestaande codebase.
 
-### Code/platform bijdrage
-
-1. DevOps-1 Continuous Delivery
-    - CDMM: Design & Architecture
-    - CDMM: Test & Verification
-
-2. Bijdrage app configuratie/containers/Kubernetes
-    - DevOps-2 Orchestration
-    - DevOps-4 Containerization
-    - CDMM: Design & Architecture
-
-3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
-    - DevOps-3 GitOps
-    - DevOps-5 SlackOps
-    - CDMM: Information & Reporting
-    - CDMM: Test & Verification
-    - CDMM: Build & Deploy
-
-4. Onderzoek
-    - DevOps-6 Onderzoek
-
-5. Bijdrage code review/kwaliteit anderen en security
-    - DevOps-4 DevSecOps
-    - CDMM: Culture&Organization
-    - CDMM: Test & Verification
-
-6. Bijdrage documentatie
-    - CDMM: Design & Architecture
-    - DevOps-6 Onderzoek
-
-7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
-    - DevOps-7 Attitude*
-    - CDDM: Culture & Organization
-
-8. Leerervaringen
-    - DevOps-7 Attitude
-    - CDDM: Culture & Organization
-
-9. Conclusie & feedback
-    - DevOps-7 Attitude
+Het samenwerken met een bekend team verliep prettig, omdat we wisten wat we van elkaar konden verwachten, wat de samenwerking soepel en aangenaam maakte. Een belangrijk verbeterpunt voor de toekomst is het frequenter houden van daily stand-ups, zodat we meer inzicht hebben in elkaars werkzaamheden en de voortgang beter kunnen monitoren.
