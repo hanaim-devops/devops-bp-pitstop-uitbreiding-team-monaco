@@ -19,6 +19,13 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Beginner 🥱. Dit de
 - [x] CO-205 Vast proces voor wijzigingen (DB/CM/Docs/Code/Artefacts): Er is een vast proces voor wijzigingen op belangrijke branches, bijvoorbeeld pull requests om code naar main te zetten
 - [x] CO-206 Decentrale besluitvorming: Binnen in een taak hoeven beslissingen of keuzes niet centraal besproken te worden, maar is degene die momenteel bezig is met een taak er verantwoordelijk voor
 
+- [ ] CO-301 Dedicated tools team
+- [x] CO-302 Team verantwoordelijk tot productie: Voor de ontwikkeling van deze applicatie zijn alle leden tot en met productie veratwoordelijk voor de applicatie aangezien wij geen extra ops specialisten inschakelen.
+- [x] CO-303 Deploy losgekoppeld van release: Onze images worden gebuild in onze deployment pipeline maar hiermee niet direct vrijgegeven voor release, dit moet los gebeuren in onze argo configuratie.
+- [x] CO-345 Continuous improvement: Binnen ons team hebben we constant onze processen aangescherpt om zo onze processen en samenwerking tot een hoger niveu te tillen.
+
+- [x] CO-402 No rollbacks (always roll forward): Wij doen geen roll-backs binnen onze applicatie, wanneer er een bug word ontdekt word deze opgelost en een nieuwe versie gereleased.
+
 ## ⛪ Ontwerp & Architectuur
 
 Wij vinden dat we binnen deze categorie onzelf bevinden in Beginner 🥱. Dit denken wij omdat we voldoen aan een aantal punten die relevant zijn aan de categorie:
@@ -61,6 +68,9 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 - [ ] BD-206 Gescripte config wijzigingen
 - [x] BD-207 Standaard proces voor alle omgevingen: Op elke omgeving wordt er op dezelfde manier gedeployed doormiddel van onder andere pipelines
 
+- [x] BD-401 Build bakery: In onze build word er gebruik gemaakt van herbruikbare componenten waardoor het mogelijk is om verschillende onderdelen wel of niet toe te voegen aan onze build.
+- [x] BD-402 Zero touch continuous deployment: Onze build processen zijn zo ingericht dat er geen actie vereist is vanuit de gebruiker, wanneer een pr word gemerged word hiervoor direct de deployments afgetrapt.
+
 ## 🧪 Test & Verificatie
 
 Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit denken wij omdat we voldoen aan een aantal punten die relevant zijn aan de categorie:
@@ -72,6 +82,8 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 
 - [x] TV-201 Automatische component test (geisoleerd): We maken gebruik van unit tests om de functionaliteit van onze code te verifiëren en deze worden automatisch uitgevoert zodra er een pipeline wordt gestart of als er een pull request is aangemaakt.
 - [x] TV-202 Enkele automatische acceptatie tests: Van unit tests om de functionaliteit van onze code te verifiëren.
+
+- [x] TV-303 Automatische security tests: Er word gebruik gemaakt van dependabot voor security scans
 
 ## 📈 Informatie & Rapporteren
 
@@ -87,3 +99,7 @@ Wij vinden dat we binnen deze categorie onzelf bevinden in Gemiddeld 😐. Dit d
 - [ ] IR-201 Gedeeld informatiemodel:
 - [x] IR-202 Traceerbaarheid ingebouwd in pipeline: Historie van de uitgevoerde pipelines kan ingezien worden. Hierdoor is er altijd een traceerbaarheid van elke pipeline
 - [x] IR-203 Rapportage historie is beschikbaar: Monitoringtool Sentry gebruikt om de history en error tracking van de applicatie bij te houden
+
+- [x] IR-301 Graphing-as-a-service: Er word gebruik gemaakt van zabbix om graphs te kunnen genereren voor onze infrastructuur
+
+- [x] IR-401 Dynamische grafieken en dashboards: Binnen zabbix is de mogelijkheid om custom dashboards en grafieken te generen
